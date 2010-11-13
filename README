@@ -1,0 +1,28 @@
+Содание статических страниц через админ-интерфейс для yii framework
+
+Модель, контроллер и представления расплоложите в защищенной области приложение (или поменяйте accessRules() для контроллера )
+Для подключения flatPages к сайту, для выбранного контрллера добавте для дейсвтия 'page' класс FlatPagesAction
+Напрмиер:
+
+
+class SiteController extends Controller
+{
+	/**
+	 * Declares class-based actions.
+	 */
+	public function actions()
+	{
+		return array(
+			// page action renders "static" pages stored under 'protected/views/site/pages'
+			// They can be accessed via: index.php?r=site/page&view=FileName
+			'page'=>array(
+				'class'=>'application.components.actions.FlatPagesAction',
+			),
+		);
+	}
+
+ ....
+
+}
+
+Таблица для БД находится в файле "db"
